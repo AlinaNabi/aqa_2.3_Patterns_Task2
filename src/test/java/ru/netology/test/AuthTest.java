@@ -30,8 +30,8 @@ public class AuthTest {
         // TODO: добавить логику теста, в рамках которого будет выполнена попытка входа в личный кабинет с учётными
         //  данными зарегистрированного активного пользователя, для заполнения полей формы используйте
         //  пользователя registeredUser
-        $("[data-test-id='login' input]").setValue(registeredUser.getLogin());
-        $("[data-test-id='password' input]").setValue(registeredUser.getPassword());
+        $("[data-test-id='login'] input").setValue(registeredUser.getLogin());
+        $("[data-test-id='password'] input").setValue(registeredUser.getPassword());
         $("[.button__content]").click();
         $(byText("Личный кабинет")).shouldBe(Condition.visible, Duration.ofSeconds(15));
     }
@@ -43,8 +43,8 @@ public class AuthTest {
         var notRegisteredUser = getUser("active");
         // TODO: добавить логику теста в рамках которого будет выполнена попытка входа в личный кабинет
         //  незарегистрированного пользователя, для заполнения полей формы используйте пользователя notRegisteredUser
-        $("[.input__control name='login']").setValue(notRegisteredUser.getLogin());
-        $("[data-test-id='password']").setValue(notRegisteredUser.getPassword());
+        $("[data-test-id='login'] input").setValue(notRegisteredUser.getLogin());
+        $("[data-test-id='password'] input").setValue(notRegisteredUser.getPassword());
         $("[.button__content]").click();
         $("[data-test-id='error-notification']").shouldBe(Condition.visible)
                 .shouldHave(text("Неверно указан логин или пароль"));
@@ -55,8 +55,8 @@ public class AuthTest {
         var blockedUser = getRegisteredUser("blocked");
         // TODO: добавить логику теста в рамках которого будет выполнена попытка входа в личный кабинет,
         //  заблокированного пользователя, для заполнения полей формы используйте пользователя blockedUser
-        $("[.input__control name='login']").setValue(blockedUser.getLogin());
-        $("[data-test-id='password' input]").setValue(blockedUser.getPassword());
+        $("[data-test-id='login'] input").setValue(blockedUser.getLogin());
+        $("[data-test-id='password'] input").setValue(blockedUser.getPassword());
         $("[.button__content]").click();
         $("[data-test-id='error-notification']").shouldBe(Condition.visible)
                 .shouldHave(text("Пользователь заблокирован"));
@@ -70,8 +70,8 @@ public class AuthTest {
         // TODO: добавить логику теста в рамках которого будет выполнена попытка входа в личный кабинет с неверным
         //  логином, для заполнения поля формы "Логин" используйте переменную wrongLogin,
         //  "Пароль" - пользователя registeredUser
-        $("[.input__control name='login']").setValue(registeredUser.getLogin());
-        $("[data-test-id='password' input]").setValue(wrongLogin);
+        $("[data-test-id='login'] input").setValue(registeredUser.getLogin());
+        $("[data-test-id='password'] input").setValue(wrongLogin);
         $("[.button__content]").click();
         $("[data-test-id='error-notification']").shouldBe(Condition.visible)
                 .shouldHave(text("Неверно указан логин или пароль"));
@@ -85,8 +85,8 @@ public class AuthTest {
         // TODO: добавить логику теста в рамках которого будет выполнена попытка входа в личный кабинет с неверным
         //  паролем, для заполнения поля формы "Логин" используйте пользователя registeredUser,
         //  "Пароль" - переменную wrongPassword
-        $("[.input__control name='login']").setValue(registeredUser.getLogin());
-        $("[data-test-id='password' input]").setValue(wrongPassword);
+        $("[data-test-id='login'] input").setValue(registeredUser.getLogin());
+        $("[data-test-id='password'] input").setValue(wrongPassword);
         $("[.button__content]").click();
         $("[data-test-id='error-notification']").shouldBe(Condition.visible)
                 .shouldHave(text("Неверно указан логин или пароль"));
