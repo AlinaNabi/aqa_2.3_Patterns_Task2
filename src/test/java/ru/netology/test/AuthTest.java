@@ -30,7 +30,7 @@ public class AuthTest {
         // TODO: добавить логику теста, в рамках которого будет выполнена попытка входа в личный кабинет с учётными
         //  данными зарегистрированного активного пользователя, для заполнения полей формы используйте
         //  пользователя registeredUser
-        $("[.input__control name='login']").setValue(registeredUser.getLogin());
+        $("[data-test-id='login' input]").setValue(registeredUser.getLogin());
         $("[data-test-id='password' input]").setValue(registeredUser.getPassword());
         $("[.button__content]").click();
         $(byText("Личный кабинет")).shouldBe(Condition.visible, Duration.ofSeconds(15));
